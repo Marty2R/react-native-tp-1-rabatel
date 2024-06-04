@@ -1,0 +1,51 @@
+main {
+    text-align: center;
+    width: 500px;
+    margin: auto;
+}
+
+.form {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+input {
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: solid gray 1px;
+    width: 70%;
+}
+
+.li {
+    border: solid gray 1px;
+    padding: 5px;
+    margin: 5px auto;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+.li p {
+    margin: 0px;
+}
+
+.add_btn {
+    border: none;
+    background-color: rgb(28, 168, 28);
+    padding: 10px 10px;
+    border-radius: 5px;
+    margin-left: 20px;
+    color: white;
+}
+
+.delete_button {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    cursor: pointer;
+}
