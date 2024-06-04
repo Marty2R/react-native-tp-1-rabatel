@@ -36,6 +36,21 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="todo"
+        options={{
+          title: "ToDo",
+          tabBarIcon: () => <Text>📝</Text>,
+          header: () => (
+            <Header
+              leftComponent={{ text: "ToDo", style: { color: "#FFF" } }}
+              containerStyle={{ backgroundColor: "#D16277" }}
+            />
+          ),
+          tabBarActiveTintColor: "#FFF",
+          tabBarActiveBackgroundColor: "#D16277",
+        }}
+      />
+      <Tabs.Screen
         name="infos"
         options={{
           title: "Informations",

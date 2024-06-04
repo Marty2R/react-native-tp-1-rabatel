@@ -1,12 +1,21 @@
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
+import { Button } from "react-native-elements";
 
 export default function SettingsScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Settings</Text>
+      <Text style={styles.titleSection}>Account</Text>
       <Button style={styles.button} title="Edite Account" />
       <Button style={styles.button} title="Hide Account" />
-      <Button style={styles.button} title="Delet Account" />
+      <Button style={styles.button} title="Delete Account" />
+      <Text></Text>
+      <Text style={styles.titleSection}>Display</Text>
+      <Button style={styles.button} title="Change for dark mode " />
+      <Button style={styles.button} title="visually impaired help " />
+      <Text></Text>
+      <Text style={styles.titleSection}>Connection</Text>
+      <Button style={styles.buttonSignOut} title="sign out " />
     </View>
   );
 }
@@ -14,14 +23,34 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    padding: 20,
   },
   title: {
     fontSize: 35,
     margin: 40,
     color: "#D16277",
+    marginVertical: 20,
+    marginHorizontal: "auto",
+  },
+  titleSection: {
+    fontWeight: "bold",
+    marginHorizontal: "auto",
+    marginBottom: 20,
   },
   button: {
-    margin: 20,
+    borderWidth: 1,
+    borderRadius: 5,
+    backgroundColor: "#D16277",
+    marginVertical: 10,
+    marginHorizontal: "auto",
+    width: 200,
+  },
+  buttonSignOut: {
+    borderWidth: 1,
+    borderRadius: 5,
+    marginVertical: 10,
+    marginHorizontal: "auto",
+    width: 200,
+    backgroundColor: "red",
   },
 });
