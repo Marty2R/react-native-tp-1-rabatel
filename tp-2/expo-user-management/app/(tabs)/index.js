@@ -20,9 +20,7 @@ export default function HomeScreen() {
       }
     );
 
-    //setRestaurant(await res.json());
-
-    console.log(await res.json());
+    setRestaurant(await res.json());
   }
 
   return (

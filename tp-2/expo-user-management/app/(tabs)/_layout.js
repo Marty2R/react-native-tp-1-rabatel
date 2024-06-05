@@ -40,11 +40,27 @@ export default function TabLayout() {
       <Tabs.Screen
         name="auth"
         options={{
-          title: "Connection",
+          title: "Account",
           tabBarIcon: () => <Text>🧑‍💻</Text>,
           header: () => (
             <Header
               leftComponent={{ text: "Connection", style: { color: "#FFF" } }}
+              containerStyle={{ backgroundColor: "#C5D096" }}
+            />
+          ),
+          tabBarActiveTintColor: "#FFF",
+          tabBarActiveBackgroundColor: "#C5D096",
+        }}
+      />
+
+      <Tabs.Screen
+        name="addProduct"
+        options={{
+          title: "New restaurant",
+          tabBarIcon: () => <Text>➕</Text>,
+          header: () => (
+            <Header
+              leftComponent={{ text: "New product", style: { color: "#FFF" } }}
               containerStyle={{ backgroundColor: "#C5D096" }}
             />
           ),
