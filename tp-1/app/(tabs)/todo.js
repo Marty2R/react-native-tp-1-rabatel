@@ -4,7 +4,6 @@ import { Button } from "react-native-elements";
 
 export default function ToDoScreen() {
   const [state, setState] = useState("");
-
   const [data, setData] = useState([]);
 
   function add() {
