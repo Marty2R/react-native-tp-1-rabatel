@@ -3,10 +3,9 @@ import { Image } from "expo-image";
 
 export default function CartScreen() {
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.title}>Your orders :</Text>
-
+    <View style={styles.container}>
+      <Text style={styles.title}>Your orders :</Text>
+      <ScrollView>
         <View style={styles.card}>
           <Image
             style={styles.image}
@@ -42,10 +41,9 @@ export default function CartScreen() {
             <Button color="#FFF" title="❌" />
           </View>
         </View>
-      </View>
-
+      </ScrollView>
       <Button color="#333" title="Passer commande ✅" />
-    </ScrollView>
+    </View>
   );
 }
 

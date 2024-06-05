@@ -13,11 +13,11 @@ export default function TabLayout() {
           header: () => (
             <Header
               leftComponent={{ text: "Home", style: { color: "#FFF" } }}
-              containerStyle={{ backgroundColor: "#333" }}
+              containerStyle={{ backgroundColor: "#C5D096" }}
             />
           ),
           tabBarActiveTintColor: "#FFF",
-          tabBarActiveBackgroundColor: "#333",
+          tabBarActiveBackgroundColor: "#C5D096",
         }}
       />
 
@@ -29,11 +29,11 @@ export default function TabLayout() {
           header: () => (
             <Header
               leftComponent={{ text: "Cart", style: { color: "#FFF" } }}
-              containerStyle={{ backgroundColor: "#333" }}
+              containerStyle={{ backgroundColor: "#C5D096" }}
             />
           ),
           tabBarActiveTintColor: "#FFF",
-          tabBarActiveBackgroundColor: "#333",
+          tabBarActiveBackgroundColor: "#C5D096",
         }}
       />
 
@@ -45,11 +45,11 @@ export default function TabLayout() {
           header: () => (
             <Header
               leftComponent={{ text: "Connection", style: { color: "#FFF" } }}
-              containerStyle={{ backgroundColor: "#333" }}
+              containerStyle={{ backgroundColor: "#C5D096" }}
             />
           ),
           tabBarActiveTintColor: "#FFF",
-          tabBarActiveBackgroundColor: "#333",
+          tabBarActiveBackgroundColor: "#C5D096",
         }}
       />
     </Tabs>

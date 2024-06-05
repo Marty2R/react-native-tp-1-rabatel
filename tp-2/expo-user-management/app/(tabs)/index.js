@@ -1,46 +1,48 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native";
 import { Image } from "expo-image";
 import { supabase } from "../../lib/supabase";
 import { useState, useEffect } from "react";
 
 export default function HomeScreen() {
-  const [restaurant_name, setRestaurantName] = useState("");
-  const [restaurant_adress, setRestaurantAdress] = useState("");
-  const [restaurant_img, setRestaurantImg] = useState("");
+  const [restaurant, setRestaurant] = useState("");
 
-  getRestaurants();
+  fetchRestaurants();
 
-  async function getRestaurants() {
-    const { data, error, status } = await supabase
-      .from("restaurant")
-      .select("*");
+  async function fetchRestaurants() {
+    const res = await fetch(
+      "https://snxpcqxzpsdlboktulki.supabase.co/rest/v1/restaurant",
+      {
+        method: "GET",
+        headers: {
+          apikey: process.env.YOUR_REACT_NATIVE_SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${process.env.YOUR_REACT_NATIVE_SUPABASE_ANON_KEY}`,
+        },
+      }
+    );
 
-    if (error && status !== 406) {
-      throw error;
-    }
+    //setRestaurant(await res.json());
 
-    if (data) {
-      setRestaurantName(data.restaurant_name);
-      setRestaurantAdress(data.restaurant_adress);
-      setRestaurantImg(data.restaurant_img);
-    }
+    console.log(await res.json());
   }
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.title}>Commandez</Text>
-        <View style={styles.div}>
-          <Image
-            style={styles.image}
-            source={restaurant_img}
-            contentFit="contain"
-          />
-          <Text style={styles.p}>{restaurant_name}</Text>
-          <Text style={styles.p}>{restaurant_adress}</Text>
-        </View>
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      <Text style={styles.title}>Commandez</Text>
+      <FlatList
+        data={restaurant}
+        renderItem={(itemData) => {
+          <View style={styles.div}>
+            <Image
+              style={styles.image}
+              source={itemData.restaurant_img}
+              contentFit="contain"
+            />
+            <Text style={styles.p}>{itemData.restaurant_name}</Text>
+            <Text style={styles.p}>{itemData.restaurant_adress}</Text>
+          </View>;
+        }}
+      />
+    </View>
   );
 }
 
