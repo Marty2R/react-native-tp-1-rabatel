@@ -13,11 +13,43 @@ export default function TabLayout() {
           header: () => (
             <Header
               leftComponent={{ text: "Home", style: { color: "#FFF" } }}
-              containerStyle={{ backgroundColor: "#D16277" }}
+              containerStyle={{ backgroundColor: "#333" }}
             />
           ),
           tabBarActiveTintColor: "#FFF",
-          tabBarActiveBackgroundColor: "#D16277",
+          tabBarActiveBackgroundColor: "#333",
+        }}
+      />
+
+      <Tabs.Screen
+        name="cart"
+        options={{
+          title: "Cart",
+          tabBarIcon: () => <Text>🛒</Text>,
+          header: () => (
+            <Header
+              leftComponent={{ text: "Cart", style: { color: "#FFF" } }}
+              containerStyle={{ backgroundColor: "#333" }}
+            />
+          ),
+          tabBarActiveTintColor: "#FFF",
+          tabBarActiveBackgroundColor: "#333",
+        }}
+      />
+
+      <Tabs.Screen
+        name="auth"
+        options={{
+          title: "Connection",
+          tabBarIcon: () => <Text>🧑‍💻</Text>,
+          header: () => (
+            <Header
+              leftComponent={{ text: "Connection", style: { color: "#FFF" } }}
+              containerStyle={{ backgroundColor: "#333" }}
+            />
+          ),
+          tabBarActiveTintColor: "#FFF",
+          tabBarActiveBackgroundColor: "#333",
         }}
       />
     </Tabs>
