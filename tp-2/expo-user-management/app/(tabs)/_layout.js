@@ -54,6 +54,22 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
+        name="qrCode"
+        options={{
+          title: "QrCode",
+          tabBarIcon: () => <Text>📷</Text>,
+          header: () => (
+            <Header
+              leftComponent={{ text: "QrCode", style: { color: "#FFF" } }}
+              containerStyle={{ backgroundColor: "#C5D096" }}
+            />
+          ),
+          tabBarActiveTintColor: "#FFF",
+          tabBarActiveBackgroundColor: "#C5D096",
+        }}
+      />
+
+      <Tabs.Screen
         name="addProduct"
         options={{
           title: "New restaurant",
