@@ -1,43 +1,49 @@
-import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  FlatList,
+  Button,
+} from "react-native";
 import { Image } from "expo-image";
+import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase";
-import { useState, useEffect } from "react";
 
 export default function HomeScreen() {
-  const [restaurant, setRestaurant] = useState("");
-
-  fetchRestaurants();
+  const [restaurant, setRestaurant] = useState([]);
 
   async function fetchRestaurants() {
-    const res = await fetch(
-      "https://snxpcqxzpsdlboktulki.supabase.co/rest/v1/restaurant",
-      {
-        method: "GET",
-        headers: {
-          apikey: process.env.YOUR_REACT_NATIVE_SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${process.env.YOUR_REACT_NATIVE_SUPABASE_ANON_KEY}`,
-        },
-      }
-    );
+    let { data: restaurant, error } = await supabase
+      .from("restaurant")
+      .select("*");
 
-    setRestaurant(await res.json());
+    setRestaurant(restaurant);
   }
+
+  const refreshData = () => {
+    fetchRestaurants();
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Commandez</Text>
+      <Button title="Mettre à jour" onPress={refreshData} />
       <FlatList
         data={restaurant}
+        keyExtractor={(item) => item.id}
         renderItem={(itemData) => {
-          <View style={styles.div}>
-            <Image
-              style={styles.image}
-              source={itemData.restaurant_img}
-              contentFit="contain"
-            />
-            <Text style={styles.p}>{itemData.restaurant_name}</Text>
-            <Text style={styles.p}>{itemData.restaurant_adress}</Text>
-          </View>;
+          return (
+            <View style={styles.div}>
+              <Image
+                style={styles.image}
+                source={itemData.item.restaurant_img}
+                contentFit="contain"
+              />
+              <Text style={styles.p}>{itemData.item.restaurant_name}</Text>
+              <Text style={styles.p}>{itemData.item.restaurant_adress}</Text>
+            </View>
+          );
         }}
       />
     </View>

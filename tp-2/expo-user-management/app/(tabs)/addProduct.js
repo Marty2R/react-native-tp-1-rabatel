@@ -1,33 +1,60 @@
 import { useEffect, TextInput, StyleSheet, Text, Button } from "react-native";
 import React, { useState } from "react";
 import { supabase } from "../../lib/supabase";
-import Auth from "../../components/Auth";
 import { View } from "react-native";
 
 export default function AddScreen() {
-  const [loading, setLoading] = useState();
+  const [name, setName] = useState("");
+  const [adress, setAdress] = useState("");
+  const [price, setPrice] = useState("");
+  const [img, setImg] = useState("");
 
-  async function registerRestaurant() {}
+  async function registerRestaurant() {
+    const { data, error } = await supabase
+      .from("restaurant")
+      .insert([
+        {
+          restaurant_name: name,
+          restaurant_adress: adress,
+          delivery_fees: price,
+          restaurant_img: img,
+        },
+      ])
+      .select();
+
+    console.log(error);
+    console.log(data);
+  }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Enregistrez votre restaurant</Text>
       <Text>Le restaurant</Text>
-      <TextInput style={styles.input} placeholder="Nom du restaurant" />
+      <TextInput
+        style={styles.input}
+        placeholder="Nom du restaurant"
+        onChangeText={(name) => setName(name)}
+      />
       <TextInput
         style={styles.input}
         placeholder="Adresse du restaurant (Numéro de rue, Rue, Ville)"
+        onChangeText={(adress) => setAdress(adress)}
       />
-      <TextInput style={styles.input} placeholder="Coût de la livraison" />
+      <TextInput
+        style={styles.input}
+        placeholder="Coût de la livraison"
+        onChangeText={(price) => setPrice(price)}
+      />
       <TextInput
         style={styles.input}
         placeholder="Lien de l'image du restaurant"
+        onChangeText={(img) => setImg(img)}
       />
       <Button
         color="#C5D096"
         style={styles.btn}
         title="Enregistrer mon restaurant"
-        onPress={() => registerRestaurant()}
+        onPress={registerRestaurant}
       />
     </View>
   );
